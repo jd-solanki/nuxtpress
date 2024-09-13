@@ -1,6 +1,13 @@
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const currentDir = dirname(fileURLToPath(import.meta.url))
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['@/assets/css/main.scss'],
+  css: [
+    join(currentDir, './assets/css/main.scss'),
+  ],
   devtools: { enabled: true },
   modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
 
