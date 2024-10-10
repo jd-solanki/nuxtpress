@@ -19,6 +19,7 @@ export default defineAppConfig({
   nuxtPress: {
     title: 'NuxtPress',
     logoSrc: 'https://anu-vue.netlify.app/logo.svg',
+    rootLinkTo: '/',
     header: {
       links: headerLinks,
       socialLinks,

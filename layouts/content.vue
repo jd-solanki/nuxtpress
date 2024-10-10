@@ -10,7 +10,7 @@ watch(
   },
 )
 
-const isPaginationHidden = computed(() => route.meta.hidePagination)
+const isPaginationHidden = computed(() => !!route.meta.hidePagination)
 </script>
 
 <template>
@@ -18,7 +18,7 @@ const isPaginationHidden = computed(() => route.meta.hidePagination)
     <header class="sticky top-0 border-b-[length:var(--header-border-width)] bg-[--body-bg]">
       <div class="container max-w-8xl flex min-h-[--header-height] items-center px-8 py-2 mx-auto header-content">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" class="cursor-pointer lg:hidden me-4 size-6" @click="isAsideVisible = true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18" /></svg>
-        <NuxtLink to="/" class="flex items-center gap-3">
+        <NuxtLink :to="appConfig.nuxtPress.rootLinkTo" class="flex items-center gap-3">
           <img :src="appConfig.nuxtPress.logoSrc" alt="Logo" class="w-6 h-6">
           <span class="text-lg font-medium">{{ appConfig.nuxtPress.title }}</span>
         </NuxtLink>
