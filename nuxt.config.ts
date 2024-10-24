@@ -19,7 +19,6 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
-
   content: {
     highlight: {
       theme: 'dracula',
