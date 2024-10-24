@@ -13,6 +13,13 @@ $colors: (
     --body-bg: white;
     --text-body: theme('colors.gray.600');
     --color-primary: theme('colors.indigo.500');
+
+    // Code Highlight
+    --np-code-line-diff-add-color: rgba(16, 185, 129, .14); /* VitePress green soft */
+    --np-code-line-diff-add-symbol-color: theme('colors.green.600');
+
+    --np-code-line-diff-remove-color: rgba(244, 63, 94, .14); /* VitePress red soft */
+    --np-code-line-diff-remove-symbol-color: theme('colors.red.600');
 }
 
 html, body {
@@ -42,6 +49,45 @@ html, body {
         }
     }
 }
+
+// Code Highlighting
+[class*='language-'] code .diff.add {
+  background-color: var(--np-code-line-diff-add-color);
+}
+
+[class*='language-'] code .diff.add::before {
+  content: '+';
+  color: var(--np-code-line-diff-add-symbol-color);
+}
+
+[class*='language-'] code .diff.remove {
+  background-color: var(--np-code-line-diff-remove-color);
+//   opacity: 0.7;
+}
+
+[class*='language-'] code .diff.remove::before {
+  content: '-';
+  color: var(--np-code-line-diff-remove-symbol-color);
+}
+
+// Diff Symbol
+[class*='language-'] code .diff::before {
+  position: relative;
+  left: -10px;
+}
+
+pre {
+    // Remove TW Typography padding
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    // Add padding to code & line which we remove from pre
+    code, .line {
+        padding-inline-start: 1.1428571em !important;
+        padding-inline-end: 1.1428571em !important;
+    }
+}
+
 
 // Component: Alert
 // Loop over the colors map & generate the CSS
