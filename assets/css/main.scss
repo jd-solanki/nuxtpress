@@ -50,7 +50,16 @@ html, body {
     }
 }
 
-// Code Highlighting
+// --- Code Highlighting
+
+// Line Highlight
+[class*=language-] code {
+    .highlight, .highlighted {
+    background-color: rgba(101, 117, 133, .16);
+}
+}
+
+// Diff
 [class*='language-'] code .diff.add {
   background-color: var(--np-code-line-diff-add-color);
 }
@@ -83,8 +92,8 @@ pre {
 
     // Add padding to code & line which we remove from pre
     code, .line {
-        padding-inline-start: 1.1428571em !important;
-        padding-inline-end: 1.1428571em !important;
+        padding-left: 1.1428571em !important;
+        padding-right: 1.1428571em !important;
     }
 }
 
