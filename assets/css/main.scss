@@ -91,7 +91,7 @@ pre {
     padding-right: 0 !important;
 
     // Add padding to code & line which we remove from pre
-    code, .line {
+    code:not(:has(.line)), .line {
         padding-left: 1.1428571em !important;
         padding-right: 1.1428571em !important;
     }
