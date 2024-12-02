@@ -18,7 +18,7 @@ const socialLinks: SocialLink[] = [
 export default defineAppConfig({
   nuxtPress: {
     title: 'NuxtPress',
-    logoSrc: 'https://anu-vue.netlify.app/logo.svg',
+    logoSrc: '/images/NuxtPress.png',
     rootLinkTo: '/',
     header: {
       links: headerLinks,
