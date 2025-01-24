@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "heybourn.headwind",
+        "xabikos.javascriptsnippets",
+        "yoavbls.pretty-ts-errors",
+        "antfu.smart-clicks",
+        "bradlc.vscode-tailwindcss",
+        "austenc.tailwind-docs",
+        "meganrogge.template-string-converter",
+        "vue.volar",
+        "matijao.vue-nuxt-snippets"
+    ]
+}

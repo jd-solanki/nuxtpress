@@ -1,0 +1,115 @@
+@use "sass:map";
+
+$colors: (
+    "primary": oklch(58.54% 0.204 277.12), /* Indigo 500 */
+    "note": oklch(55.44% 0.041 257.42), /* Slate 500 */
+    "info": oklch(62.31% 0.188 259.81), /* Blue 500 */
+    "success": oklch(72.27% 0.192 149.58), /* Green 500 */
+    "warning": oklch(76.86% 0.165 70.08), /* Amber 500 */
+    "danger": oklch(63.68% 0.208 25.33), /* Red 500 */
+);
+
+:root {
+    --body-bg: white;
+    --text-body: theme('colors.gray.600');
+    --color-primary: theme('colors.indigo.500');
+
+    // Code Highlight
+    --np-code-line-diff-add-color: rgba(16, 185, 129, .14); /* VitePress green soft */
+    --np-code-line-diff-add-symbol-color: theme('colors.green.600');
+
+    --np-code-line-diff-remove-color: rgba(244, 63, 94, .14); /* VitePress red soft */
+    --np-code-line-diff-remove-symbol-color: theme('colors.red.600');
+}
+
+html, body {
+    background-color: var(--body-bg);
+    color: var(--text-body);
+    scroll-padding: calc(var(--header-height) + 1rem);
+}
+
+// Layout
+:root {
+    --header-height: 60px;
+    --header-border-width: 1px;
+    --toc-margin-top: 4rem;
+    --aside-nav-margin-top: 0px;
+}
+
+// Plugin: Typography
+.prose {
+    --tw-prose-body: var(--text-body);
+}
+
+// Prose Content
+.prose {
+    h1, h2, h3, h4, h5, h6 {
+        > a {
+            text-decoration: none;
+        }
+    }
+}
+
+// --- Code Highlighting
+
+// Line Highlight
+[class*=language-] code {
+    .highlight, .highlighted {
+    background-color: rgba(101, 117, 133, .16);
+}
+}
+
+// Diff
+[class*='language-'] code .diff.add {
+  background-color: var(--np-code-line-diff-add-color);
+}
+
+[class*='language-'] code .diff.add::before {
+  content: '+';
+  color: var(--np-code-line-diff-add-symbol-color);
+}
+
+[class*='language-'] code .diff.remove {
+  background-color: var(--np-code-line-diff-remove-color);
+//   opacity: 0.7;
+}
+
+[class*='language-'] code .diff.remove::before {
+  content: '-';
+  color: var(--np-code-line-diff-remove-symbol-color);
+}
+
+// Diff Symbol
+[class*='language-'] code .diff::before {
+  position: relative;
+  left: -10px;
+}
+
+pre {
+    // Remove TW Typography padding
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    // Add padding to code & line which we remove from pre
+    code:not(:has(.line)), .line {
+        padding-left: 1.1428571em !important;
+        padding-right: 1.1428571em !important;
+    }
+}
+
+
+// Component: Alert
+// Loop over the colors map & generate the CSS
+@each $name, $color in $colors {
+    // If color is "success" assume "tip" will be name. For rest, color & name will be same.
+    $tip: if($name == "success", "tip", $name);
+    .np-alert-#{$tip} {
+        $color: $color;
+        border-color: color-mix(in oklch, $color, transparent 75%);
+        background-color: color-mix(in oklch, $color, transparent 93%);
+    }
+}
+
+.np-expand {
+    background-color: color-mix(in oklch, map.get($colors, 'note'), transparent 93%);
+}
